@@ -1,26 +1,26 @@
 ---
 title: Swagger Petstore v1.0.5
 language_tabs:
-- shell: Shell
-- http: HTTP
-- javascript: JavaScript
-- ruby: Ruby
-- python: Python
-- php: PHP
-- java: Java
-- go: Go
-  toc_footers:
-- <a href='http://swagger.io'>Find out more about Swagger</a>
-  includes: []
-  search: true
-  highlight_theme: darkula
-  headingLevel: 2
+  - shell: Shell
+  - http: HTTP
+  - javascript: JavaScript
+  - ruby: Ruby
+  - python: Python
+  - php: PHP
+  - java: Java
+  - go: Go
+toc_footers:
+  - <a href="http://swagger.io">Find out more about Swagger</a>
+includes: []
+search: true
+highlight_theme: darkula
+headingLevel: 2
 
 ---
 
 <!-- Generator: Widdershins v4.0.1 -->
 
-<h1 id='swagger-petstore'>Swagger Petstore v1.0.5</h1>
+<h1 id="swagger-petstore">Swagger Petstore v1.0.5</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
@@ -28,38 +28,38 @@ This is a sample server Petstore server.  You can find out more about Swagger at
 
 Base URLs:
 
-* <a href='https://petstore.swagger.io/v2'>https://petstore.swagger.io/v2</a>
+* <a href="https://petstore.swagger.io/v2">https://petstore.swagger.io/v2</a>
 
-* <a href='http://petstore.swagger.io/v2'>http://petstore.swagger.io/v2</a>
+* <a href="http://petstore.swagger.io/v2">http://petstore.swagger.io/v2</a>
 
-<a href='http://swagger.io/terms/'>Terms of service</a>
-Email: <a href='mailto:apiteam@swagger.io'>Support</a>
-License: <a href='http://www.apache.org/licenses/LICENSE-2.0.html'>Apache 2.0</a>
+<a href="http://swagger.io/terms/">Terms of service</a>
+Email: <a href="mailto:apiteam@swagger.io">Support</a> 
+License: <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</a>
 
 # Authentication
 
 * API Key (api_key)
-  - Parameter Name: **api_key**, in: header.
+    - Parameter Name: **api_key**, in: header. 
 
-- oAuth2 authentication.
+- oAuth2 authentication. 
 
-  - Flow: implicit
-  - Authorization URL = [https://petstore.swagger.io/oauth/authorize](https://petstore.swagger.io/oauth/authorize)
+    - Flow: implicit
+    - Authorization URL = [https://petstore.swagger.io/oauth/authorize](https://petstore.swagger.io/oauth/authorize)
 
 |Scope|Scope Description|
 |---|---|
 |read:pets|read your pets|
 |write:pets|modify pets in your account|
 
-<h1 id='swagger-petstore-pet'>pet</h1>
+<h1 id="swagger-petstore-pet">pet</h1>
 
 Everything about your Pets
 
-<a href='http://swagger.io'>Find out more</a>
+<a href="http://swagger.io">Find out more</a>
 
 ## uploadFile
 
-<a id='opIduploadFile'></a>
+<a id="opIduploadFile"></a>
 
 > Code samples
 
@@ -173,7 +173,7 @@ try {
 ```java
 URL obj = new URL("https://petstore.swagger.io/v2/pet/{petId}/uploadImage");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod('POST');
+con.setRequestMethod("POST");
 int responseCode = con.getResponseCode();
 BufferedReader in = new BufferedReader(
     new InputStreamReader(con.getInputStream()));
