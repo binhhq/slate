@@ -239,4 +239,5 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the kitten to delete
 ID2 | The ID of the kitten to delete
+ID3 | The ID of the kitten to delete
 
