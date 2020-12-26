@@ -1,5 +1,5 @@
 ---
-title: Swagger Petstore v1.0.5
+title: grpc-swagger v
 language_tabs:
   - shell: Shell
   - http: HTTP
@@ -9,8 +9,7 @@ language_tabs:
   - php: PHP
   - java: Java
   - go: Go
-toc_footers:
-  - <a href="http://swagger.io">Find out more about Swagger</a>
+toc_footers: []
 includes: []
 search: true
 highlight_theme: darkula
@@ -20,1785 +19,31 @@ headingLevel: 2
 
 <!-- Generator: Widdershins v4.0.1 -->
 
-<h1 id="swagger-petstore">Swagger Petstore v1.0.5</h1>
+<h1 id="">grpc-swagger v</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
-This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.
-
 Base URLs:
 
-* <a href="https://petstore.swagger.io/v2">https://petstore.swagger.io/v2</a>
+* <a href="http://127.0.0.1:8080/">http://127.0.0.1:8080/</a>
 
-* <a href="http://petstore.swagger.io/v2">http://petstore.swagger.io/v2</a>
+<h1 id="-default">Default</h1>
 
-<a href="http://swagger.io/terms/">Terms of service</a>
-Email: <a href="mailto:apiteam@swagger.io">Support</a> 
-License: <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</a>
-
-# Authentication
-
-* API Key (api_key)
-    - Parameter Name: **api_key**, in: header. 
-
-- oAuth2 authentication. 
-
-    - Flow: implicit
-    - Authorization URL = [https://petstore.swagger.io/oauth/authorize](https://petstore.swagger.io/oauth/authorize)
-
-|Scope|Scope Description|
-|---|---|
-|read:pets|read your pets|
-|write:pets|modify pets in your account|
-
-<h1 id="swagger-petstore-pet">pet</h1>
-
-Everything about your Pets
-
-<a href="http://swagger.io">Find out more</a>
-
-## uploadFile
-
-<a id="opIduploadFile"></a>
+## post__core.taxItem.TaxItemService.recover
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST https://petstore.swagger.io/v2/pet/{petId}/uploadImage \
-  -H 'Content-Type: multipart/form-data' \
-  -H 'Accept: application/json' \
-  -H 'Authorization: Bearer {access-token}'
-
-```
-
-```http
-POST https://petstore.swagger.io/v2/pet/{petId}/uploadImage HTTP/1.1
-Host: petstore.swagger.io
-Content-Type: multipart/form-data
-Accept: application/json
-
-```
-
-```javascript
-const inputBody = '{
-  "additionalMetadata": "string",
-  "file": "string"
-}';
-const headers = {
-  'Content-Type':'multipart/form-data',
-  'Accept':'application/json',
-  'Authorization':'Bearer {access-token}'
-};
-
-fetch('https://petstore.swagger.io/v2/pet/{petId}/uploadImage',
-{
-  method: 'POST',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Content-Type' => 'multipart/form-data',
-  'Accept' => 'application/json',
-  'Authorization' => 'Bearer {access-token}'
-}
-
-result = RestClient.post 'https://petstore.swagger.io/v2/pet/{petId}/uploadImage',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Content-Type': 'multipart/form-data',
-  'Accept': 'application/json',
-  'Authorization': 'Bearer {access-token}'
-}
-
-r = requests.post('https://petstore.swagger.io/v2/pet/{petId}/uploadImage', headers = headers)
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$headers = array(
-    'Content-Type' => 'multipart/form-data',
-    'Accept' => 'application/json',
-    'Authorization' => 'Bearer {access-token}',
-);
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('POST','https://petstore.swagger.io/v2/pet/{petId}/uploadImage', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("https://petstore.swagger.io/v2/pet/{petId}/uploadImage");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("POST");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Content-Type": []string{"multipart/form-data"},
-        "Accept": []string{"application/json"},
-        "Authorization": []string{"Bearer {access-token}"},
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://petstore.swagger.io/v2/pet/{petId}/uploadImage", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`POST /pet/{petId}/uploadImage`
-
-*uploads an image*
-
-> Body parameter
-
-```yaml
-additionalMetadata: string
-file: string
-
-```
-
-<h3 id="uploadfile-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|petId|path|integer(int64)|true|ID of pet to update|
-|body|body|object|false|none|
-|» additionalMetadata|body|string|false|Additional data to pass to server|
-|» file|body|string(binary)|false|file to upload|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "code": 0,
-  "type": "string",
-  "message": "string"
-}
-```
-
-<h3 id="uploadfile-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[ApiResponse](#schemaapiresponse)|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-petstore_auth ( Scopes: write:pets read:pets )
-</aside>
-
-## addPet
-
-<a id="opIdaddPet"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST https://petstore.swagger.io/v2/pet \
-  -H 'Content-Type: application/json' \
-  -H 'Authorization: Bearer {access-token}'
-
-```
-
-```http
-POST https://petstore.swagger.io/v2/pet HTTP/1.1
-Host: petstore.swagger.io
-Content-Type: application/json
-
-```
-
-```javascript
-const inputBody = '{
-  "id": 0,
-  "category": {
-    "id": 0,
-    "name": "string"
-  },
-  "name": "doggie",
-  "photoUrls": [
-    "string"
-  ],
-  "tags": [
-    {
-      "id": 0,
-      "name": "string"
-    }
-  ],
-  "status": "available"
-}';
-const headers = {
-  'Content-Type':'application/json',
-  'Authorization':'Bearer {access-token}'
-};
-
-fetch('https://petstore.swagger.io/v2/pet',
-{
-  method: 'POST',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Content-Type' => 'application/json',
-  'Authorization' => 'Bearer {access-token}'
-}
-
-result = RestClient.post 'https://petstore.swagger.io/v2/pet',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Content-Type': 'application/json',
-  'Authorization': 'Bearer {access-token}'
-}
-
-r = requests.post('https://petstore.swagger.io/v2/pet', headers = headers)
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$headers = array(
-    'Content-Type' => 'application/json',
-    'Authorization' => 'Bearer {access-token}',
-);
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('POST','https://petstore.swagger.io/v2/pet', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("https://petstore.swagger.io/v2/pet");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("POST");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Content-Type": []string{"application/json"},
-        "Authorization": []string{"Bearer {access-token}"},
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://petstore.swagger.io/v2/pet", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`POST /pet`
-
-*Add a new pet to the store*
-
-> Body parameter
-
-```json
-{
-  "id": 0,
-  "category": {
-    "id": 0,
-    "name": "string"
-  },
-  "name": "doggie",
-  "photoUrls": [
-    "string"
-  ],
-  "tags": [
-    {
-      "id": 0,
-      "name": "string"
-    }
-  ],
-  "status": "available"
-}
-```
-
-```xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<Pet>
-  <id>0</id>
-  <category>
-    <id>0</id>
-    <name>string</name>
-  </category>
-  <name>doggie</name>
-  <photoUrls>string</photoUrls>
-  <tags>
-    <id>0</id>
-    <name>string</name>
-  </tags>
-  <status>available</status>
-</Pet>
-```
-
-<h3 id="addpet-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|[Pet](#schemapet)|true|Pet object that needs to be added to the store|
-
-<h3 id="addpet-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|405|[Method Not Allowed](https://tools.ietf.org/html/rfc7231#section-6.5.5)|Invalid input|None|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-petstore_auth ( Scopes: write:pets read:pets )
-</aside>
-
-## updatePet
-
-<a id="opIdupdatePet"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X PUT https://petstore.swagger.io/v2/pet \
-  -H 'Content-Type: application/json' \
-  -H 'Authorization: Bearer {access-token}'
-
-```
-
-```http
-PUT https://petstore.swagger.io/v2/pet HTTP/1.1
-Host: petstore.swagger.io
-Content-Type: application/json
-
-```
-
-```javascript
-const inputBody = '{
-  "id": 0,
-  "category": {
-    "id": 0,
-    "name": "string"
-  },
-  "name": "doggie",
-  "photoUrls": [
-    "string"
-  ],
-  "tags": [
-    {
-      "id": 0,
-      "name": "string"
-    }
-  ],
-  "status": "available"
-}';
-const headers = {
-  'Content-Type':'application/json',
-  'Authorization':'Bearer {access-token}'
-};
-
-fetch('https://petstore.swagger.io/v2/pet',
-{
-  method: 'PUT',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Content-Type' => 'application/json',
-  'Authorization' => 'Bearer {access-token}'
-}
-
-result = RestClient.put 'https://petstore.swagger.io/v2/pet',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Content-Type': 'application/json',
-  'Authorization': 'Bearer {access-token}'
-}
-
-r = requests.put('https://petstore.swagger.io/v2/pet', headers = headers)
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$headers = array(
-    'Content-Type' => 'application/json',
-    'Authorization' => 'Bearer {access-token}',
-);
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('PUT','https://petstore.swagger.io/v2/pet', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("https://petstore.swagger.io/v2/pet");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("PUT");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Content-Type": []string{"application/json"},
-        "Authorization": []string{"Bearer {access-token}"},
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("PUT", "https://petstore.swagger.io/v2/pet", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`PUT /pet`
-
-*Update an existing pet*
-
-> Body parameter
-
-```json
-{
-  "id": 0,
-  "category": {
-    "id": 0,
-    "name": "string"
-  },
-  "name": "doggie",
-  "photoUrls": [
-    "string"
-  ],
-  "tags": [
-    {
-      "id": 0,
-      "name": "string"
-    }
-  ],
-  "status": "available"
-}
-```
-
-```xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<Pet>
-  <id>0</id>
-  <category>
-    <id>0</id>
-    <name>string</name>
-  </category>
-  <name>doggie</name>
-  <photoUrls>string</photoUrls>
-  <tags>
-    <id>0</id>
-    <name>string</name>
-  </tags>
-  <status>available</status>
-</Pet>
-```
-
-<h3 id="updatepet-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|[Pet](#schemapet)|true|Pet object that needs to be added to the store|
-
-<h3 id="updatepet-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Invalid ID supplied|None|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Pet not found|None|
-|405|[Method Not Allowed](https://tools.ietf.org/html/rfc7231#section-6.5.5)|Validation exception|None|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-petstore_auth ( Scopes: write:pets read:pets )
-</aside>
-
-## findPetsByStatus
-
-<a id="opIdfindPetsByStatus"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET https://petstore.swagger.io/v2/pet/findByStatus?status=available \
-  -H 'Accept: application/json' \
-  -H 'Authorization: Bearer {access-token}'
-
-```
-
-```http
-GET https://petstore.swagger.io/v2/pet/findByStatus?status=available HTTP/1.1
-Host: petstore.swagger.io
-Accept: application/json
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json',
-  'Authorization':'Bearer {access-token}'
-};
-
-fetch('https://petstore.swagger.io/v2/pet/findByStatus?status=available',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json',
-  'Authorization' => 'Bearer {access-token}'
-}
-
-result = RestClient.get 'https://petstore.swagger.io/v2/pet/findByStatus',
-  params: {
-  'status' => 'array[string]'
-}, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'Authorization': 'Bearer {access-token}'
-}
-
-r = requests.get('https://petstore.swagger.io/v2/pet/findByStatus', params={
-  'status': [
-  "available"
-]
-}, headers = headers)
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$headers = array(
-    'Accept' => 'application/json',
-    'Authorization' => 'Bearer {access-token}',
-);
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('GET','https://petstore.swagger.io/v2/pet/findByStatus', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("https://petstore.swagger.io/v2/pet/findByStatus?status=available");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-        "Authorization": []string{"Bearer {access-token}"},
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://petstore.swagger.io/v2/pet/findByStatus", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`GET /pet/findByStatus`
-
-*Finds Pets by status*
-
-Multiple status values can be provided with comma separated strings
-
-<h3 id="findpetsbystatus-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|status|query|array[string]|true|Status values that need to be considered for filter|
-
-#### Enumerated Values
-
-|Parameter|Value|
-|---|---|
-|status|available|
-|status|pending|
-|status|sold|
-
-> Example responses
-
-> 200 Response
-
-```json
-[
-  {
-    "id": 0,
-    "category": {
-      "id": 0,
-      "name": "string"
-    },
-    "name": "doggie",
-    "photoUrls": [
-      "string"
-    ],
-    "tags": [
-      {
-        "id": 0,
-        "name": "string"
-      }
-    ],
-    "status": "available"
-  }
-]
-```
-
-```xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<id>0</id>
-<category>
-  <id>0</id>
-  <name>string</name>
-</category>
-<name>doggie</name>
-<photoUrls>string</photoUrls>
-<tags>
-  <id>0</id>
-  <name>string</name>
-</tags>
-<status>available</status>
-```
-
-<h3 id="findpetsbystatus-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|Inline|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Invalid status value|None|
-
-<h3 id="findpetsbystatus-responseschema">Response Schema</h3>
-
-Status Code **200**
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|*anonymous*|[[Pet](#schemapet)]|false|none|none|
-|» id|integer(int64)|false|none|none|
-|» category|[Category](#schemacategory)|false|none|none|
-|»» id|integer(int64)|false|none|none|
-|»» name|string|false|none|none|
-|» name|string|true|none|none|
-|» photoUrls|[string]|true|none|none|
-|» tags|[[Tag](#schematag)]|false|none|none|
-|»» id|integer(int64)|false|none|none|
-|»» name|string|false|none|none|
-|» status|string|false|none|pet status in the store|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|status|available|
-|status|pending|
-|status|sold|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-petstore_auth ( Scopes: write:pets read:pets )
-</aside>
-
-## findPetsByTags
-
-<a id="opIdfindPetsByTags"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET https://petstore.swagger.io/v2/pet/findByTags?tags=string \
-  -H 'Accept: application/json' \
-  -H 'Authorization: Bearer {access-token}'
-
-```
-
-```http
-GET https://petstore.swagger.io/v2/pet/findByTags?tags=string HTTP/1.1
-Host: petstore.swagger.io
-Accept: application/json
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json',
-  'Authorization':'Bearer {access-token}'
-};
-
-fetch('https://petstore.swagger.io/v2/pet/findByTags?tags=string',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json',
-  'Authorization' => 'Bearer {access-token}'
-}
-
-result = RestClient.get 'https://petstore.swagger.io/v2/pet/findByTags',
-  params: {
-  'tags' => 'array[string]'
-}, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'Authorization': 'Bearer {access-token}'
-}
-
-r = requests.get('https://petstore.swagger.io/v2/pet/findByTags', params={
-  'tags': [
-  "string"
-]
-}, headers = headers)
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$headers = array(
-    'Accept' => 'application/json',
-    'Authorization' => 'Bearer {access-token}',
-);
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('GET','https://petstore.swagger.io/v2/pet/findByTags', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("https://petstore.swagger.io/v2/pet/findByTags?tags=string");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-        "Authorization": []string{"Bearer {access-token}"},
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://petstore.swagger.io/v2/pet/findByTags", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`GET /pet/findByTags`
-
-*Finds Pets by tags*
-
-Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
-
-<h3 id="findpetsbytags-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|tags|query|array[string]|true|Tags to filter by|
-
-> Example responses
-
-> 200 Response
-
-```json
-[
-  {
-    "id": 0,
-    "category": {
-      "id": 0,
-      "name": "string"
-    },
-    "name": "doggie",
-    "photoUrls": [
-      "string"
-    ],
-    "tags": [
-      {
-        "id": 0,
-        "name": "string"
-      }
-    ],
-    "status": "available"
-  }
-]
-```
-
-```xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<id>0</id>
-<category>
-  <id>0</id>
-  <name>string</name>
-</category>
-<name>doggie</name>
-<photoUrls>string</photoUrls>
-<tags>
-  <id>0</id>
-  <name>string</name>
-</tags>
-<status>available</status>
-```
-
-<h3 id="findpetsbytags-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|Inline|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Invalid tag value|None|
-
-<h3 id="findpetsbytags-responseschema">Response Schema</h3>
-
-Status Code **200**
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|*anonymous*|[[Pet](#schemapet)]|false|none|none|
-|» id|integer(int64)|false|none|none|
-|» category|[Category](#schemacategory)|false|none|none|
-|»» id|integer(int64)|false|none|none|
-|»» name|string|false|none|none|
-|» name|string|true|none|none|
-|» photoUrls|[string]|true|none|none|
-|» tags|[[Tag](#schematag)]|false|none|none|
-|»» id|integer(int64)|false|none|none|
-|»» name|string|false|none|none|
-|» status|string|false|none|pet status in the store|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|status|available|
-|status|pending|
-|status|sold|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-petstore_auth ( Scopes: write:pets read:pets )
-</aside>
-
-## getPetById
-
-<a id="opIdgetPetById"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET https://petstore.swagger.io/v2/pet/{petId} \
-  -H 'Accept: application/json' \
-  -H 'api_key: API_KEY'
-
-```
-
-```http
-GET https://petstore.swagger.io/v2/pet/{petId} HTTP/1.1
-Host: petstore.swagger.io
-Accept: application/json
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json',
-  'api_key':'API_KEY'
-};
-
-fetch('https://petstore.swagger.io/v2/pet/{petId}',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json',
-  'api_key' => 'API_KEY'
-}
-
-result = RestClient.get 'https://petstore.swagger.io/v2/pet/{petId}',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'api_key': 'API_KEY'
-}
-
-r = requests.get('https://petstore.swagger.io/v2/pet/{petId}', headers = headers)
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$headers = array(
-    'Accept' => 'application/json',
-    'api_key' => 'API_KEY',
-);
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('GET','https://petstore.swagger.io/v2/pet/{petId}', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("https://petstore.swagger.io/v2/pet/{petId}");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-        "api_key": []string{"API_KEY"},
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://petstore.swagger.io/v2/pet/{petId}", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`GET /pet/{petId}`
-
-*Find pet by ID*
-
-Returns a single pet
-
-<h3 id="getpetbyid-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|petId|path|integer(int64)|true|ID of pet to return|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "id": 0,
-  "category": {
-    "id": 0,
-    "name": "string"
-  },
-  "name": "doggie",
-  "photoUrls": [
-    "string"
-  ],
-  "tags": [
-    {
-      "id": 0,
-      "name": "string"
-    }
-  ],
-  "status": "available"
-}
-```
-
-```xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<Pet>
-  <id>0</id>
-  <category>
-    <id>0</id>
-    <name>string</name>
-  </category>
-  <name>doggie</name>
-  <photoUrls>string</photoUrls>
-  <tags>
-    <id>0</id>
-    <name>string</name>
-  </tags>
-  <status>available</status>
-</Pet>
-```
-
-<h3 id="getpetbyid-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[Pet](#schemapet)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Invalid ID supplied|None|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Pet not found|None|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-api_key
-</aside>
-
-## updatePetWithForm
-
-<a id="opIdupdatePetWithForm"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST https://petstore.swagger.io/v2/pet/{petId} \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'Authorization: Bearer {access-token}'
-
-```
-
-```http
-POST https://petstore.swagger.io/v2/pet/{petId} HTTP/1.1
-Host: petstore.swagger.io
-Content-Type: application/x-www-form-urlencoded
-
-```
-
-```javascript
-const inputBody = '{
-  "name": "string",
-  "status": "string"
-}';
-const headers = {
-  'Content-Type':'application/x-www-form-urlencoded',
-  'Authorization':'Bearer {access-token}'
-};
-
-fetch('https://petstore.swagger.io/v2/pet/{petId}',
-{
-  method: 'POST',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Content-Type' => 'application/x-www-form-urlencoded',
-  'Authorization' => 'Bearer {access-token}'
-}
-
-result = RestClient.post 'https://petstore.swagger.io/v2/pet/{petId}',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Content-Type': 'application/x-www-form-urlencoded',
-  'Authorization': 'Bearer {access-token}'
-}
-
-r = requests.post('https://petstore.swagger.io/v2/pet/{petId}', headers = headers)
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$headers = array(
-    'Content-Type' => 'application/x-www-form-urlencoded',
-    'Authorization' => 'Bearer {access-token}',
-);
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('POST','https://petstore.swagger.io/v2/pet/{petId}', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("https://petstore.swagger.io/v2/pet/{petId}");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("POST");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Content-Type": []string{"application/x-www-form-urlencoded"},
-        "Authorization": []string{"Bearer {access-token}"},
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://petstore.swagger.io/v2/pet/{petId}", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`POST /pet/{petId}`
-
-*Updates a pet in the store with form data*
-
-> Body parameter
-
-```yaml
-name: string
-status: string
-
-```
-
-<h3 id="updatepetwithform-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|petId|path|integer(int64)|true|ID of pet that needs to be updated|
-|body|body|object|false|none|
-|» name|body|string|false|Updated name of the pet|
-|» status|body|string|false|Updated status of the pet|
-
-<h3 id="updatepetwithform-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|405|[Method Not Allowed](https://tools.ietf.org/html/rfc7231#section-6.5.5)|Invalid input|None|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-petstore_auth ( Scopes: write:pets read:pets )
-</aside>
-
-## deletePet
-
-<a id="opIddeletePet"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X DELETE https://petstore.swagger.io/v2/pet/{petId} \
-  -H 'api_key: string' \
-  -H 'Authorization: Bearer {access-token}'
-
-```
-
-```http
-DELETE https://petstore.swagger.io/v2/pet/{petId} HTTP/1.1
-Host: petstore.swagger.io
-
-api_key: string
-
-```
-
-```javascript
-
-const headers = {
-  'api_key':'string',
-  'Authorization':'Bearer {access-token}'
-};
-
-fetch('https://petstore.swagger.io/v2/pet/{petId}',
-{
-  method: 'DELETE',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'api_key' => 'string',
-  'Authorization' => 'Bearer {access-token}'
-}
-
-result = RestClient.delete 'https://petstore.swagger.io/v2/pet/{petId}',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'api_key': 'string',
-  'Authorization': 'Bearer {access-token}'
-}
-
-r = requests.delete('https://petstore.swagger.io/v2/pet/{petId}', headers = headers)
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$headers = array(
-    'api_key' => 'string',
-    'Authorization' => 'Bearer {access-token}',
-);
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('DELETE','https://petstore.swagger.io/v2/pet/{petId}', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("https://petstore.swagger.io/v2/pet/{petId}");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("DELETE");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "api_key": []string{"string"},
-        "Authorization": []string{"Bearer {access-token}"},
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("DELETE", "https://petstore.swagger.io/v2/pet/{petId}", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`DELETE /pet/{petId}`
-
-*Deletes a pet*
-
-<h3 id="deletepet-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|api_key|header|string|false|none|
-|petId|path|integer(int64)|true|Pet id to delete|
-
-<h3 id="deletepet-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Invalid ID supplied|None|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Pet not found|None|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-petstore_auth ( Scopes: write:pets read:pets )
-</aside>
-
-<h1 id="swagger-petstore-store">store</h1>
-
-Access to Petstore orders
-
-## placeOrder
-
-<a id="opIdplaceOrder"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST https://petstore.swagger.io/v2/store/order \
+curl -X POST http://127.0.0.1:8080/core.taxItem.TaxItemService.recover \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json'
 
 ```
 
 ```http
-POST https://petstore.swagger.io/v2/store/order HTTP/1.1
-Host: petstore.swagger.io
+POST http://127.0.0.1:8080/core.taxItem.TaxItemService.recover HTTP/1.1
+Host: 127.0.0.1:8080
 Content-Type: application/json
 Accept: application/json
 
@@ -1806,19 +51,14 @@ Accept: application/json
 
 ```javascript
 const inputBody = '{
-  "id": 0,
-  "petId": 0,
-  "quantity": 0,
-  "shipDate": "2019-08-24T14:15:22Z",
-  "status": "placed",
-  "complete": true
+  "taxItemId": "string"
 }';
 const headers = {
   'Content-Type':'application/json',
   'Accept':'application/json'
 };
 
-fetch('https://petstore.swagger.io/v2/store/order',
+fetch('http://127.0.0.1:8080/core.taxItem.TaxItemService.recover',
 {
   method: 'POST',
   body: inputBody,
@@ -1841,7 +81,7 @@ headers = {
   'Accept' => 'application/json'
 }
 
-result = RestClient.post 'https://petstore.swagger.io/v2/store/order',
+result = RestClient.post 'http://127.0.0.1:8080/core.taxItem.TaxItemService.recover',
   params: {
   }, headers: headers
 
@@ -1856,7 +96,7 @@ headers = {
   'Accept': 'application/json'
 }
 
-r = requests.post('https://petstore.swagger.io/v2/store/order', headers = headers)
+r = requests.post('http://127.0.0.1:8080/core.taxItem.TaxItemService.recover', headers = headers)
 
 print(r.json())
 
@@ -1878,7 +118,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('POST','https://petstore.swagger.io/v2/store/order', array(
+    $response = $client->request('POST','http://127.0.0.1:8080/core.taxItem.TaxItemService.recover', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -1895,7 +135,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("https://petstore.swagger.io/v2/store/order");
+URL obj = new URL("http://127.0.0.1:8080/core.taxItem.TaxItemService.recover");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("POST");
 int responseCode = con.getResponseCode();
@@ -1927,7 +167,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://petstore.swagger.io/v2/store/order", data)
+    req, err := http.NewRequest("POST", "http://127.0.0.1:8080/core.taxItem.TaxItemService.recover", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -1937,28 +177,24 @@ func main() {
 
 ```
 
-`POST /store/order`
+`POST /core.taxItem.TaxItemService.recover`
 
-*Place an order for a pet*
+recover
 
 > Body parameter
 
 ```json
 {
-  "id": 0,
-  "petId": 0,
-  "quantity": 0,
-  "shipDate": "2019-08-24T14:15:22Z",
-  "status": "placed",
-  "complete": true
+  "taxItemId": "string"
 }
 ```
 
-<h3 id="placeorder-parameters">Parameters</h3>
+<h3 id="post__core.taxitem.taxitemservice.recover-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[Order](#schemaorder)|true|order placed for purchasing the pet|
+|headers|query|object|false|Headers passed to gRPC server|
+|body|body|[core.taxItem.RecoverTaxItemReq](#schemacore.taxitem.recovertaxitemreq)|true|none|
 
 > Example responses
 
@@ -1966,1815 +202,62 @@ func main() {
 
 ```json
 {
-  "id": 0,
-  "petId": 0,
-  "quantity": 0,
-  "shipDate": "2019-08-24T14:15:22Z",
-  "status": "placed",
-  "complete": true
+  "taxItemDto": {
+    "owner": "string",
+    "itemId": "string",
+    "createdAt": "string",
+    "updatedBy": "string",
+    "createdBy": "string",
+    "dataVersion": "string",
+    "taxId": "string",
+    "isArchived": true,
+    "id": "string",
+    "version": 0,
+    "updatedAt": "string"
+  }
 }
 ```
 
-```xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<Order>
-  <id>0</id>
-  <petId>0</petId>
-  <quantity>0</quantity>
-  <shipDate>2019-08-24T14:15:22Z</shipDate>
-  <status>placed</status>
-  <complete>true</complete>
-</Order>
-```
-
-<h3 id="placeorder-responses">Responses</h3>
+<h3 id="post__core.taxitem.taxitemservice.recover-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[Order](#schemaorder)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Invalid Order|None|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[core.taxItem.RecoverTaxItemRes](#schemacore.taxitem.recovertaxitemres)|
 
 <aside class="success">
 This operation does not require authentication
 </aside>
 
-## getOrderById
-
-<a id="opIdgetOrderById"></a>
+## post__core.taxItem.TaxItemService.getTaxByItemId
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X GET https://petstore.swagger.io/v2/store/order/{orderId} \
+curl -X POST http://127.0.0.1:8080/core.taxItem.TaxItemService.getTaxByItemId \
+  -H 'Content-Type: application/json' \
   -H 'Accept: application/json'
 
 ```
 
 ```http
-GET https://petstore.swagger.io/v2/store/order/{orderId} HTTP/1.1
-Host: petstore.swagger.io
-Accept: application/json
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json'
-};
-
-fetch('https://petstore.swagger.io/v2/store/order/{orderId}',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json'
-}
-
-result = RestClient.get 'https://petstore.swagger.io/v2/store/order/{orderId}',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.get('https://petstore.swagger.io/v2/store/order/{orderId}', headers = headers)
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$headers = array(
-    'Accept' => 'application/json',
-);
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('GET','https://petstore.swagger.io/v2/store/order/{orderId}', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("https://petstore.swagger.io/v2/store/order/{orderId}");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://petstore.swagger.io/v2/store/order/{orderId}", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`GET /store/order/{orderId}`
-
-*Find purchase order by ID*
-
-For valid response try integer IDs with value >= 1 and <= 10. Other values will generated exceptions
-
-<h3 id="getorderbyid-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|orderId|path|integer(int64)|true|ID of pet that needs to be fetched|
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "id": 0,
-  "petId": 0,
-  "quantity": 0,
-  "shipDate": "2019-08-24T14:15:22Z",
-  "status": "placed",
-  "complete": true
-}
-```
-
-```xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<Order>
-  <id>0</id>
-  <petId>0</petId>
-  <quantity>0</quantity>
-  <shipDate>2019-08-24T14:15:22Z</shipDate>
-  <status>placed</status>
-  <complete>true</complete>
-</Order>
-```
-
-<h3 id="getorderbyid-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[Order](#schemaorder)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Invalid ID supplied|None|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Order not found|None|
-
-<aside class="success">
-This operation does not require authentication
-</aside>
-
-## deleteOrder
-
-<a id="opIddeleteOrder"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X DELETE https://petstore.swagger.io/v2/store/order/{orderId}
-
-```
-
-```http
-DELETE https://petstore.swagger.io/v2/store/order/{orderId} HTTP/1.1
-Host: petstore.swagger.io
-
-```
-
-```javascript
-
-fetch('https://petstore.swagger.io/v2/store/order/{orderId}',
-{
-  method: 'DELETE'
-
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-result = RestClient.delete 'https://petstore.swagger.io/v2/store/order/{orderId}',
-  params: {
-  }
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-
-r = requests.delete('https://petstore.swagger.io/v2/store/order/{orderId}')
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('DELETE','https://petstore.swagger.io/v2/store/order/{orderId}', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("https://petstore.swagger.io/v2/store/order/{orderId}");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("DELETE");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("DELETE", "https://petstore.swagger.io/v2/store/order/{orderId}", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`DELETE /store/order/{orderId}`
-
-*Delete purchase order by ID*
-
-For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors
-
-<h3 id="deleteorder-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|orderId|path|integer(int64)|true|ID of the order that needs to be deleted|
-
-<h3 id="deleteorder-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Invalid ID supplied|None|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Order not found|None|
-
-<aside class="success">
-This operation does not require authentication
-</aside>
-
-## getInventory
-
-<a id="opIdgetInventory"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET https://petstore.swagger.io/v2/store/inventory \
-  -H 'Accept: application/json' \
-  -H 'api_key: API_KEY'
-
-```
-
-```http
-GET https://petstore.swagger.io/v2/store/inventory HTTP/1.1
-Host: petstore.swagger.io
-Accept: application/json
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json',
-  'api_key':'API_KEY'
-};
-
-fetch('https://petstore.swagger.io/v2/store/inventory',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json',
-  'api_key' => 'API_KEY'
-}
-
-result = RestClient.get 'https://petstore.swagger.io/v2/store/inventory',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'api_key': 'API_KEY'
-}
-
-r = requests.get('https://petstore.swagger.io/v2/store/inventory', headers = headers)
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$headers = array(
-    'Accept' => 'application/json',
-    'api_key' => 'API_KEY',
-);
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('GET','https://petstore.swagger.io/v2/store/inventory', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("https://petstore.swagger.io/v2/store/inventory");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-        "api_key": []string{"API_KEY"},
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://petstore.swagger.io/v2/store/inventory", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`GET /store/inventory`
-
-*Returns pet inventories by status*
-
-Returns a map of status codes to quantities
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "property1": 0,
-  "property2": 0
-}
-```
-
-<h3 id="getinventory-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|Inline|
-
-<h3 id="getinventory-responseschema">Response Schema</h3>
-
-Status Code **200**
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|» **additionalProperties**|integer(int32)|false|none|none|
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-api_key
-</aside>
-
-<h1 id="swagger-petstore-user">user</h1>
-
-Operations about user
-
-<a href="http://swagger.io">Find out more about our store</a>
-
-## createUsersWithArrayInput
-
-<a id="opIdcreateUsersWithArrayInput"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST https://petstore.swagger.io/v2/user/createWithArray \
-  -H 'Content-Type: application/json'
-
-```
-
-```http
-POST https://petstore.swagger.io/v2/user/createWithArray HTTP/1.1
-Host: petstore.swagger.io
+POST http://127.0.0.1:8080/core.taxItem.TaxItemService.getTaxByItemId HTTP/1.1
+Host: 127.0.0.1:8080
 Content-Type: application/json
-
-```
-
-```javascript
-const inputBody = '[
-  {
-    "id": 0,
-    "username": "string",
-    "firstName": "string",
-    "lastName": "string",
-    "email": "string",
-    "password": "string",
-    "phone": "string",
-    "userStatus": 0
-  }
-]';
-const headers = {
-  'Content-Type':'application/json'
-};
-
-fetch('https://petstore.swagger.io/v2/user/createWithArray',
-{
-  method: 'POST',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Content-Type' => 'application/json'
-}
-
-result = RestClient.post 'https://petstore.swagger.io/v2/user/createWithArray',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Content-Type': 'application/json'
-}
-
-r = requests.post('https://petstore.swagger.io/v2/user/createWithArray', headers = headers)
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$headers = array(
-    'Content-Type' => 'application/json',
-);
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('POST','https://petstore.swagger.io/v2/user/createWithArray', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("https://petstore.swagger.io/v2/user/createWithArray");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("POST");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Content-Type": []string{"application/json"},
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://petstore.swagger.io/v2/user/createWithArray", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`POST /user/createWithArray`
-
-*Creates list of users with given input array*
-
-> Body parameter
-
-```json
-[
-  {
-    "id": 0,
-    "username": "string",
-    "firstName": "string",
-    "lastName": "string",
-    "email": "string",
-    "password": "string",
-    "phone": "string",
-    "userStatus": 0
-  }
-]
-```
-
-<h3 id="createuserswitharrayinput-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|[User](#schemauser)|true|List of user object|
-
-<h3 id="createuserswitharrayinput-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|default|Default|successful operation|None|
-
-<aside class="success">
-This operation does not require authentication
-</aside>
-
-## createUsersWithListInput
-
-<a id="opIdcreateUsersWithListInput"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST https://petstore.swagger.io/v2/user/createWithList \
-  -H 'Content-Type: application/json'
-
-```
-
-```http
-POST https://petstore.swagger.io/v2/user/createWithList HTTP/1.1
-Host: petstore.swagger.io
-Content-Type: application/json
-
-```
-
-```javascript
-const inputBody = '[
-  {
-    "id": 0,
-    "username": "string",
-    "firstName": "string",
-    "lastName": "string",
-    "email": "string",
-    "password": "string",
-    "phone": "string",
-    "userStatus": 0
-  }
-]';
-const headers = {
-  'Content-Type':'application/json'
-};
-
-fetch('https://petstore.swagger.io/v2/user/createWithList',
-{
-  method: 'POST',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Content-Type' => 'application/json'
-}
-
-result = RestClient.post 'https://petstore.swagger.io/v2/user/createWithList',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Content-Type': 'application/json'
-}
-
-r = requests.post('https://petstore.swagger.io/v2/user/createWithList', headers = headers)
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$headers = array(
-    'Content-Type' => 'application/json',
-);
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('POST','https://petstore.swagger.io/v2/user/createWithList', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("https://petstore.swagger.io/v2/user/createWithList");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("POST");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Content-Type": []string{"application/json"},
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://petstore.swagger.io/v2/user/createWithList", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`POST /user/createWithList`
-
-*Creates list of users with given input array*
-
-> Body parameter
-
-```json
-[
-  {
-    "id": 0,
-    "username": "string",
-    "firstName": "string",
-    "lastName": "string",
-    "email": "string",
-    "password": "string",
-    "phone": "string",
-    "userStatus": 0
-  }
-]
-```
-
-<h3 id="createuserswithlistinput-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|body|body|[User](#schemauser)|true|List of user object|
-
-<h3 id="createuserswithlistinput-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|default|Default|successful operation|None|
-
-<aside class="success">
-This operation does not require authentication
-</aside>
-
-## getUserByName
-
-<a id="opIdgetUserByName"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET https://petstore.swagger.io/v2/user/{username} \
-  -H 'Accept: application/json'
-
-```
-
-```http
-GET https://petstore.swagger.io/v2/user/{username} HTTP/1.1
-Host: petstore.swagger.io
 Accept: application/json
-
-```
-
-```javascript
-
-const headers = {
-  'Accept':'application/json'
-};
-
-fetch('https://petstore.swagger.io/v2/user/{username}',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json'
-}
-
-result = RestClient.get 'https://petstore.swagger.io/v2/user/{username}',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.get('https://petstore.swagger.io/v2/user/{username}', headers = headers)
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$headers = array(
-    'Accept' => 'application/json',
-);
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('GET','https://petstore.swagger.io/v2/user/{username}', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("https://petstore.swagger.io/v2/user/{username}");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://petstore.swagger.io/v2/user/{username}", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`GET /user/{username}`
-
-*Get user by user name*
-
-<h3 id="getuserbyname-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|username|path|string|true|The name that needs to be fetched. Use user1 for testing. |
-
-> Example responses
-
-> 200 Response
-
-```json
-{
-  "id": 0,
-  "username": "string",
-  "firstName": "string",
-  "lastName": "string",
-  "email": "string",
-  "password": "string",
-  "phone": "string",
-  "userStatus": 0
-}
-```
-
-```xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<User>
-  <id>0</id>
-  <username>string</username>
-  <firstName>string</firstName>
-  <lastName>string</lastName>
-  <email>string</email>
-  <password>string</password>
-  <phone>string</phone>
-  <userStatus>0</userStatus>
-</User>
-```
-
-<h3 id="getuserbyname-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|[User](#schemauser)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Invalid username supplied|None|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|User not found|None|
-
-<aside class="success">
-This operation does not require authentication
-</aside>
-
-## updateUser
-
-<a id="opIdupdateUser"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X PUT https://petstore.swagger.io/v2/user/{username} \
-  -H 'Content-Type: application/json'
-
-```
-
-```http
-PUT https://petstore.swagger.io/v2/user/{username} HTTP/1.1
-Host: petstore.swagger.io
-Content-Type: application/json
 
 ```
 
 ```javascript
 const inputBody = '{
-  "id": 0,
-  "username": "string",
-  "firstName": "string",
-  "lastName": "string",
-  "email": "string",
-  "password": "string",
-  "phone": "string",
-  "userStatus": 0
+  "itemId": "string"
 }';
 const headers = {
-  'Content-Type':'application/json'
-};
-
-fetch('https://petstore.swagger.io/v2/user/{username}',
-{
-  method: 'PUT',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Content-Type' => 'application/json'
-}
-
-result = RestClient.put 'https://petstore.swagger.io/v2/user/{username}',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Content-Type': 'application/json'
-}
-
-r = requests.put('https://petstore.swagger.io/v2/user/{username}', headers = headers)
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$headers = array(
-    'Content-Type' => 'application/json',
-);
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('PUT','https://petstore.swagger.io/v2/user/{username}', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("https://petstore.swagger.io/v2/user/{username}");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("PUT");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Content-Type": []string{"application/json"},
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("PUT", "https://petstore.swagger.io/v2/user/{username}", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`PUT /user/{username}`
-
-*Updated user*
-
-This can only be done by the logged in user.
-
-> Body parameter
-
-```json
-{
-  "id": 0,
-  "username": "string",
-  "firstName": "string",
-  "lastName": "string",
-  "email": "string",
-  "password": "string",
-  "phone": "string",
-  "userStatus": 0
-}
-```
-
-<h3 id="updateuser-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|username|path|string|true|name that need to be updated|
-|body|body|[User](#schemauser)|true|Updated user object|
-
-<h3 id="updateuser-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Invalid user supplied|None|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|User not found|None|
-
-<aside class="success">
-This operation does not require authentication
-</aside>
-
-## deleteUser
-
-<a id="opIddeleteUser"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X DELETE https://petstore.swagger.io/v2/user/{username}
-
-```
-
-```http
-DELETE https://petstore.swagger.io/v2/user/{username} HTTP/1.1
-Host: petstore.swagger.io
-
-```
-
-```javascript
-
-fetch('https://petstore.swagger.io/v2/user/{username}',
-{
-  method: 'DELETE'
-
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-result = RestClient.delete 'https://petstore.swagger.io/v2/user/{username}',
-  params: {
-  }
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-
-r = requests.delete('https://petstore.swagger.io/v2/user/{username}')
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('DELETE','https://petstore.swagger.io/v2/user/{username}', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("https://petstore.swagger.io/v2/user/{username}");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("DELETE");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("DELETE", "https://petstore.swagger.io/v2/user/{username}", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`DELETE /user/{username}`
-
-*Delete user*
-
-This can only be done by the logged in user.
-
-<h3 id="deleteuser-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|username|path|string|true|The name that needs to be deleted|
-
-<h3 id="deleteuser-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Invalid username supplied|None|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|User not found|None|
-
-<aside class="success">
-This operation does not require authentication
-</aside>
-
-## loginUser
-
-<a id="opIdloginUser"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET https://petstore.swagger.io/v2/user/login?username=string&password=string \
-  -H 'Accept: application/json'
-
-```
-
-```http
-GET https://petstore.swagger.io/v2/user/login?username=string&password=string HTTP/1.1
-Host: petstore.swagger.io
-Accept: application/json
-
-```
-
-```javascript
-
-const headers = {
+  'Content-Type':'application/json',
   'Accept':'application/json'
 };
 
-fetch('https://petstore.swagger.io/v2/user/login?username=string&password=string',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json'
-}
-
-result = RestClient.get 'https://petstore.swagger.io/v2/user/login',
-  params: {
-  'username' => 'string',
-'password' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json'
-}
-
-r = requests.get('https://petstore.swagger.io/v2/user/login', params={
-  'username': 'string',  'password': 'string'
-}, headers = headers)
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$headers = array(
-    'Accept' => 'application/json',
-);
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('GET','https://petstore.swagger.io/v2/user/login', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("https://petstore.swagger.io/v2/user/login?username=string&password=string");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://petstore.swagger.io/v2/user/login", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`GET /user/login`
-
-*Logs user into the system*
-
-<h3 id="loginuser-parameters">Parameters</h3>
-
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|username|query|string|true|The user name for login|
-|password|query|string|true|The password for login in clear text|
-
-> Example responses
-
-> 200 Response
-
-```json
-"string"
-```
-
-<h3 id="loginuser-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|string|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Invalid username/password supplied|None|
-
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|X-Expires-After|string|date-time|date in UTC when token expires|
-|200|X-Rate-Limit|integer|int32|calls per hour allowed by the user|
-
-<aside class="success">
-This operation does not require authentication
-</aside>
-
-## logoutUser
-
-<a id="opIdlogoutUser"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X GET https://petstore.swagger.io/v2/user/logout
-
-```
-
-```http
-GET https://petstore.swagger.io/v2/user/logout HTTP/1.1
-Host: petstore.swagger.io
-
-```
-
-```javascript
-
-fetch('https://petstore.swagger.io/v2/user/logout',
-{
-  method: 'GET'
-
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-result = RestClient.get 'https://petstore.swagger.io/v2/user/logout',
-  params: {
-  }
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-
-r = requests.get('https://petstore.swagger.io/v2/user/logout')
-
-print(r.json())
-
-```
-
-```php
-<?php
-
-require 'vendor/autoload.php';
-
-$client = new \GuzzleHttp\Client();
-
-// Define array of request body.
-$request_body = array();
-
-try {
-    $response = $client->request('GET','https://petstore.swagger.io/v2/user/logout', array(
-        'headers' => $headers,
-        'json' => $request_body,
-       )
-    );
-    print_r($response->getBody()->getContents());
- }
- catch (\GuzzleHttp\Exception\BadResponseException $e) {
-    // handle exception or api errors.
-    print_r($e->getMessage());
- }
-
- // ...
-
-```
-
-```java
-URL obj = new URL("https://petstore.swagger.io/v2/user/logout");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://petstore.swagger.io/v2/user/logout", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-`GET /user/logout`
-
-*Logs out current logged in user session*
-
-<h3 id="logoutuser-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|default|Default|successful operation|None|
-
-<aside class="success">
-This operation does not require authentication
-</aside>
-
-## createUser
-
-<a id="opIdcreateUser"></a>
-
-> Code samples
-
-```shell
-# You can also use wget
-curl -X POST https://petstore.swagger.io/v2/user \
-  -H 'Content-Type: application/json'
-
-```
-
-```http
-POST https://petstore.swagger.io/v2/user HTTP/1.1
-Host: petstore.swagger.io
-Content-Type: application/json
-
-```
-
-```javascript
-const inputBody = '{
-  "id": 0,
-  "username": "string",
-  "firstName": "string",
-  "lastName": "string",
-  "email": "string",
-  "password": "string",
-  "phone": "string",
-  "userStatus": 0
-}';
-const headers = {
-  'Content-Type':'application/json'
-};
-
-fetch('https://petstore.swagger.io/v2/user',
+fetch('http://127.0.0.1:8080/core.taxItem.TaxItemService.getTaxByItemId',
 {
   method: 'POST',
   body: inputBody,
@@ -3793,10 +276,11 @@ require 'rest-client'
 require 'json'
 
 headers = {
-  'Content-Type' => 'application/json'
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json'
 }
 
-result = RestClient.post 'https://petstore.swagger.io/v2/user',
+result = RestClient.post 'http://127.0.0.1:8080/core.taxItem.TaxItemService.getTaxByItemId',
   params: {
   }, headers: headers
 
@@ -3807,10 +291,11 @@ p JSON.parse(result)
 ```python
 import requests
 headers = {
-  'Content-Type': 'application/json'
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
 }
 
-r = requests.post('https://petstore.swagger.io/v2/user', headers = headers)
+r = requests.post('http://127.0.0.1:8080/core.taxItem.TaxItemService.getTaxByItemId', headers = headers)
 
 print(r.json())
 
@@ -3823,6 +308,7 @@ require 'vendor/autoload.php';
 
 $headers = array(
     'Content-Type' => 'application/json',
+    'Accept' => 'application/json',
 );
 
 $client = new \GuzzleHttp\Client();
@@ -3831,7 +317,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('POST','https://petstore.swagger.io/v2/user', array(
+    $response = $client->request('POST','http://127.0.0.1:8080/core.taxItem.TaxItemService.getTaxByItemId', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -3848,7 +334,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("https://petstore.swagger.io/v2/user");
+URL obj = new URL("http://127.0.0.1:8080/core.taxItem.TaxItemService.getTaxByItemId");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("POST");
 int responseCode = con.getResponseCode();
@@ -3876,10 +362,11 @@ func main() {
 
     headers := map[string][]string{
         "Content-Type": []string{"application/json"},
+        "Accept": []string{"application/json"},
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://petstore.swagger.io/v2/user", data)
+    req, err := http.NewRequest("POST", "http://127.0.0.1:8080/core.taxItem.TaxItemService.getTaxByItemId", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -3889,38 +376,1848 @@ func main() {
 
 ```
 
-`POST /user`
+`POST /core.taxItem.TaxItemService.getTaxByItemId`
 
-*Create user*
-
-This can only be done by the logged in user.
+getTaxByItemId
 
 > Body parameter
 
 ```json
 {
-  "id": 0,
-  "username": "string",
-  "firstName": "string",
-  "lastName": "string",
-  "email": "string",
-  "password": "string",
-  "phone": "string",
-  "userStatus": 0
+  "itemId": "string"
 }
 ```
 
-<h3 id="createuser-parameters">Parameters</h3>
+<h3 id="post__core.taxitem.taxitemservice.gettaxbyitemid-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[User](#schemauser)|true|Created user object|
+|headers|query|object|false|Headers passed to gRPC server|
+|body|body|[core.taxItem.GetTaxByItemIdReq](#schemacore.taxitem.gettaxbyitemidreq)|true|none|
 
-<h3 id="createuser-responses">Responses</h3>
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "taxList": [
+    {
+      "owner": "string",
+      "appToCreate": "string",
+      "updatedBy": "string",
+      "code": "string",
+      "dataVersion": "string",
+      "isArchived": true,
+      "onlyVisibleToCreatorApp": true,
+      "locationToCreate": "string",
+      "objectClass": "string",
+      "appSubClass": "string",
+      "appSubKey": "string",
+      "version": 0,
+      "percent": 0,
+      "createdAt": "string",
+      "createdBy": "string",
+      "name": "string",
+      "objectName": "string",
+      "appKey": "string",
+      "id": "string",
+      "updatedAt": "string"
+    }
+  ]
+}
+```
+
+<h3 id="post__core.taxitem.taxitemservice.gettaxbyitemid-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|default|Default|successful operation|None|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[core.taxItem.GetTaxByItemIdRes](#schemacore.taxitem.gettaxbyitemidres)|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## post__core.taxItem.TaxItemService.archive
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST http://127.0.0.1:8080/core.taxItem.TaxItemService.archive \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json'
+
+```
+
+```http
+POST http://127.0.0.1:8080/core.taxItem.TaxItemService.archive HTTP/1.1
+Host: 127.0.0.1:8080
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+const inputBody = '{
+  "optimisticVersion": 0,
+  "taxItemId": "string"
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json'
+};
+
+fetch('http://127.0.0.1:8080/core.taxItem.TaxItemService.archive',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json'
+}
+
+result = RestClient.post 'http://127.0.0.1:8080/core.taxItem.TaxItemService.archive',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.post('http://127.0.0.1:8080/core.taxItem.TaxItemService.archive', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Content-Type' => 'application/json',
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('POST','http://127.0.0.1:8080/core.taxItem.TaxItemService.archive', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("http://127.0.0.1:8080/core.taxItem.TaxItemService.archive");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Content-Type": []string{"application/json"},
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "http://127.0.0.1:8080/core.taxItem.TaxItemService.archive", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`POST /core.taxItem.TaxItemService.archive`
+
+archive
+
+> Body parameter
+
+```json
+{
+  "optimisticVersion": 0,
+  "taxItemId": "string"
+}
+```
+
+<h3 id="post__core.taxitem.taxitemservice.archive-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|headers|query|object|false|Headers passed to gRPC server|
+|body|body|[core.taxItem.ArchiveTaxItemReq](#schemacore.taxitem.archivetaxitemreq)|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "taxItemDto": {
+    "owner": "string",
+    "itemId": "string",
+    "createdAt": "string",
+    "updatedBy": "string",
+    "createdBy": "string",
+    "dataVersion": "string",
+    "taxId": "string",
+    "isArchived": true,
+    "id": "string",
+    "version": 0,
+    "updatedAt": "string"
+  }
+}
+```
+
+<h3 id="post__core.taxitem.taxitemservice.archive-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[core.taxItem.ArchiveTaxItemRes](#schemacore.taxitem.archivetaxitemres)|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## post__core.taxItem.TaxItemService.showArchivedTaxItem
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST http://127.0.0.1:8080/core.taxItem.TaxItemService.showArchivedTaxItem \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json'
+
+```
+
+```http
+POST http://127.0.0.1:8080/core.taxItem.TaxItemService.showArchivedTaxItem HTTP/1.1
+Host: 127.0.0.1:8080
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+const inputBody = '{
+  "pagingAndSorting": {
+    "sortOrder": "ASC",
+    "limit": 0,
+    "lastIndex": "string"
+  }
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json'
+};
+
+fetch('http://127.0.0.1:8080/core.taxItem.TaxItemService.showArchivedTaxItem',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json'
+}
+
+result = RestClient.post 'http://127.0.0.1:8080/core.taxItem.TaxItemService.showArchivedTaxItem',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.post('http://127.0.0.1:8080/core.taxItem.TaxItemService.showArchivedTaxItem', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Content-Type' => 'application/json',
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('POST','http://127.0.0.1:8080/core.taxItem.TaxItemService.showArchivedTaxItem', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("http://127.0.0.1:8080/core.taxItem.TaxItemService.showArchivedTaxItem");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Content-Type": []string{"application/json"},
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "http://127.0.0.1:8080/core.taxItem.TaxItemService.showArchivedTaxItem", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`POST /core.taxItem.TaxItemService.showArchivedTaxItem`
+
+showArchivedTaxItem
+
+> Body parameter
+
+```json
+{
+  "pagingAndSorting": {
+    "sortOrder": "ASC",
+    "limit": 0,
+    "lastIndex": "string"
+  }
+}
+```
+
+<h3 id="post__core.taxitem.taxitemservice.showarchivedtaxitem-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|headers|query|object|false|Headers passed to gRPC server|
+|body|body|[core.taxItem.ShowArchivedTaxItemReq](#schemacore.taxitem.showarchivedtaxitemreq)|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "listTaxItemDtoArchived": [
+    {
+      "owner": "string",
+      "itemId": "string",
+      "createdAt": "string",
+      "updatedBy": "string",
+      "createdBy": "string",
+      "dataVersion": "string",
+      "taxId": "string",
+      "isArchived": true,
+      "id": "string",
+      "version": 0,
+      "updatedAt": "string"
+    }
+  ]
+}
+```
+
+<h3 id="post__core.taxitem.taxitemservice.showarchivedtaxitem-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[core.taxItem.ShowArchivedTaxItemRes](#schemacore.taxitem.showarchivedtaxitemres)|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## post__core.taxItem.TaxItemService.getById
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST http://127.0.0.1:8080/core.taxItem.TaxItemService.getById \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json'
+
+```
+
+```http
+POST http://127.0.0.1:8080/core.taxItem.TaxItemService.getById HTTP/1.1
+Host: 127.0.0.1:8080
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+const inputBody = '{
+  "id": "string"
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json'
+};
+
+fetch('http://127.0.0.1:8080/core.taxItem.TaxItemService.getById',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json'
+}
+
+result = RestClient.post 'http://127.0.0.1:8080/core.taxItem.TaxItemService.getById',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.post('http://127.0.0.1:8080/core.taxItem.TaxItemService.getById', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Content-Type' => 'application/json',
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('POST','http://127.0.0.1:8080/core.taxItem.TaxItemService.getById', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("http://127.0.0.1:8080/core.taxItem.TaxItemService.getById");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Content-Type": []string{"application/json"},
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "http://127.0.0.1:8080/core.taxItem.TaxItemService.getById", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`POST /core.taxItem.TaxItemService.getById`
+
+getById
+
+> Body parameter
+
+```json
+{
+  "id": "string"
+}
+```
+
+<h3 id="post__core.taxitem.taxitemservice.getbyid-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|headers|query|object|false|Headers passed to gRPC server|
+|body|body|[core.taxItem.GetTaxItemByIdReq](#schemacore.taxitem.gettaxitembyidreq)|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "taxItemDto": {
+    "owner": "string",
+    "itemId": "string",
+    "createdAt": "string",
+    "updatedBy": "string",
+    "createdBy": "string",
+    "dataVersion": "string",
+    "taxId": "string",
+    "isArchived": true,
+    "id": "string",
+    "version": 0,
+    "updatedAt": "string"
+  }
+}
+```
+
+<h3 id="post__core.taxitem.taxitemservice.getbyid-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[core.taxItem.GetTaxItemByIdRes](#schemacore.taxitem.gettaxitembyidres)|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## post__core.taxItem.TaxItemService.update
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST http://127.0.0.1:8080/core.taxItem.TaxItemService.update \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json'
+
+```
+
+```http
+POST http://127.0.0.1:8080/core.taxItem.TaxItemService.update HTTP/1.1
+Host: 127.0.0.1:8080
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+const inputBody = '{
+  "itemId": "string",
+  "optimisticVersion": 0,
+  "taxId": "string",
+  "taxItemId": "string"
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json'
+};
+
+fetch('http://127.0.0.1:8080/core.taxItem.TaxItemService.update',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json'
+}
+
+result = RestClient.post 'http://127.0.0.1:8080/core.taxItem.TaxItemService.update',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.post('http://127.0.0.1:8080/core.taxItem.TaxItemService.update', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Content-Type' => 'application/json',
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('POST','http://127.0.0.1:8080/core.taxItem.TaxItemService.update', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("http://127.0.0.1:8080/core.taxItem.TaxItemService.update");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Content-Type": []string{"application/json"},
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "http://127.0.0.1:8080/core.taxItem.TaxItemService.update", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`POST /core.taxItem.TaxItemService.update`
+
+update
+
+> Body parameter
+
+```json
+{
+  "itemId": "string",
+  "optimisticVersion": 0,
+  "taxId": "string",
+  "taxItemId": "string"
+}
+```
+
+<h3 id="post__core.taxitem.taxitemservice.update-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|headers|query|object|false|Headers passed to gRPC server|
+|body|body|[core.taxItem.UpdateTaxItemReq](#schemacore.taxitem.updatetaxitemreq)|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "taxItemDto": {
+    "owner": "string",
+    "itemId": "string",
+    "createdAt": "string",
+    "updatedBy": "string",
+    "createdBy": "string",
+    "dataVersion": "string",
+    "taxId": "string",
+    "isArchived": true,
+    "id": "string",
+    "version": 0,
+    "updatedAt": "string"
+  }
+}
+```
+
+<h3 id="post__core.taxitem.taxitemservice.update-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[core.taxItem.UpdateTaxItemRes](#schemacore.taxitem.updatetaxitemres)|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## post__core.taxItem.TaxItemService.countArchiveTaxItem
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST http://127.0.0.1:8080/core.taxItem.TaxItemService.countArchiveTaxItem \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json'
+
+```
+
+```http
+POST http://127.0.0.1:8080/core.taxItem.TaxItemService.countArchiveTaxItem HTTP/1.1
+Host: 127.0.0.1:8080
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+const inputBody = '{}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json'
+};
+
+fetch('http://127.0.0.1:8080/core.taxItem.TaxItemService.countArchiveTaxItem',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json'
+}
+
+result = RestClient.post 'http://127.0.0.1:8080/core.taxItem.TaxItemService.countArchiveTaxItem',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.post('http://127.0.0.1:8080/core.taxItem.TaxItemService.countArchiveTaxItem', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Content-Type' => 'application/json',
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('POST','http://127.0.0.1:8080/core.taxItem.TaxItemService.countArchiveTaxItem', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("http://127.0.0.1:8080/core.taxItem.TaxItemService.countArchiveTaxItem");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Content-Type": []string{"application/json"},
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "http://127.0.0.1:8080/core.taxItem.TaxItemService.countArchiveTaxItem", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`POST /core.taxItem.TaxItemService.countArchiveTaxItem`
+
+countArchiveTaxItem
+
+> Body parameter
+
+```json
+{}
+```
+
+<h3 id="post__core.taxitem.taxitemservice.countarchivetaxitem-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|headers|query|object|false|Headers passed to gRPC server|
+|body|body|[core.taxItem.CountArchiveTaxItemReq](#schemacore.taxitem.countarchivetaxitemreq)|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "count": 0
+}
+```
+
+<h3 id="post__core.taxitem.taxitemservice.countarchivetaxitem-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[core.taxItem.CountRes](#schemacore.taxitem.countres)|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## post__core.taxItem.TaxItemService.searchTaxItem
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST http://127.0.0.1:8080/core.taxItem.TaxItemService.searchTaxItem \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json'
+
+```
+
+```http
+POST http://127.0.0.1:8080/core.taxItem.TaxItemService.searchTaxItem HTTP/1.1
+Host: 127.0.0.1:8080
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+const inputBody = '{
+  "queryString": "string",
+  "pagingAndSorting": {
+    "sortOrder": "ASC",
+    "limit": 0,
+    "lastIndex": "string"
+  }
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json'
+};
+
+fetch('http://127.0.0.1:8080/core.taxItem.TaxItemService.searchTaxItem',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json'
+}
+
+result = RestClient.post 'http://127.0.0.1:8080/core.taxItem.TaxItemService.searchTaxItem',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.post('http://127.0.0.1:8080/core.taxItem.TaxItemService.searchTaxItem', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Content-Type' => 'application/json',
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('POST','http://127.0.0.1:8080/core.taxItem.TaxItemService.searchTaxItem', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("http://127.0.0.1:8080/core.taxItem.TaxItemService.searchTaxItem");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Content-Type": []string{"application/json"},
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "http://127.0.0.1:8080/core.taxItem.TaxItemService.searchTaxItem", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`POST /core.taxItem.TaxItemService.searchTaxItem`
+
+searchTaxItem
+
+> Body parameter
+
+```json
+{
+  "queryString": "string",
+  "pagingAndSorting": {
+    "sortOrder": "ASC",
+    "limit": 0,
+    "lastIndex": "string"
+  }
+}
+```
+
+<h3 id="post__core.taxitem.taxitemservice.searchtaxitem-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|headers|query|object|false|Headers passed to gRPC server|
+|body|body|[core.taxItem.SearchTaxItemReq](#schemacore.taxitem.searchtaxitemreq)|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "owner": "string",
+      "itemId": "string",
+      "createdAt": "string",
+      "updatedBy": "string",
+      "createdBy": "string",
+      "dataVersion": "string",
+      "taxId": "string",
+      "isArchived": true,
+      "id": "string",
+      "version": 0,
+      "updatedAt": "string"
+    }
+  ]
+}
+```
+
+<h3 id="post__core.taxitem.taxitemservice.searchtaxitem-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[core.taxItem.SearchTaxItemRes](#schemacore.taxitem.searchtaxitemres)|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## post__core.taxItem.TaxItemService.countSearchTaxItem
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST http://127.0.0.1:8080/core.taxItem.TaxItemService.countSearchTaxItem \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json'
+
+```
+
+```http
+POST http://127.0.0.1:8080/core.taxItem.TaxItemService.countSearchTaxItem HTTP/1.1
+Host: 127.0.0.1:8080
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+const inputBody = '{
+  "queryString": "string"
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json'
+};
+
+fetch('http://127.0.0.1:8080/core.taxItem.TaxItemService.countSearchTaxItem',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json'
+}
+
+result = RestClient.post 'http://127.0.0.1:8080/core.taxItem.TaxItemService.countSearchTaxItem',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.post('http://127.0.0.1:8080/core.taxItem.TaxItemService.countSearchTaxItem', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Content-Type' => 'application/json',
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('POST','http://127.0.0.1:8080/core.taxItem.TaxItemService.countSearchTaxItem', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("http://127.0.0.1:8080/core.taxItem.TaxItemService.countSearchTaxItem");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Content-Type": []string{"application/json"},
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "http://127.0.0.1:8080/core.taxItem.TaxItemService.countSearchTaxItem", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`POST /core.taxItem.TaxItemService.countSearchTaxItem`
+
+countSearchTaxItem
+
+> Body parameter
+
+```json
+{
+  "queryString": "string"
+}
+```
+
+<h3 id="post__core.taxitem.taxitemservice.countsearchtaxitem-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|headers|query|object|false|Headers passed to gRPC server|
+|body|body|[core.taxItem.CountSearchTaxItemReq](#schemacore.taxitem.countsearchtaxitemreq)|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "count": 0
+}
+```
+
+<h3 id="post__core.taxitem.taxitemservice.countsearchtaxitem-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[core.taxItem.CountRes](#schemacore.taxitem.countres)|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## post__core.taxItem.TaxItemService.create
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST http://127.0.0.1:8080/core.taxItem.TaxItemService.create \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json'
+
+```
+
+```http
+POST http://127.0.0.1:8080/core.taxItem.TaxItemService.create HTTP/1.1
+Host: 127.0.0.1:8080
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+const inputBody = '{
+  "itemId": "string",
+  "taxId": "string"
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json'
+};
+
+fetch('http://127.0.0.1:8080/core.taxItem.TaxItemService.create',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json'
+}
+
+result = RestClient.post 'http://127.0.0.1:8080/core.taxItem.TaxItemService.create',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.post('http://127.0.0.1:8080/core.taxItem.TaxItemService.create', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Content-Type' => 'application/json',
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('POST','http://127.0.0.1:8080/core.taxItem.TaxItemService.create', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("http://127.0.0.1:8080/core.taxItem.TaxItemService.create");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Content-Type": []string{"application/json"},
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "http://127.0.0.1:8080/core.taxItem.TaxItemService.create", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`POST /core.taxItem.TaxItemService.create`
+
+create
+
+> Body parameter
+
+```json
+{
+  "itemId": "string",
+  "taxId": "string"
+}
+```
+
+<h3 id="post__core.taxitem.taxitemservice.create-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|headers|query|object|false|Headers passed to gRPC server|
+|body|body|[core.taxItem.CreateTaxItemReq](#schemacore.taxitem.createtaxitemreq)|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "taxItemDto": {
+    "owner": "string",
+    "itemId": "string",
+    "createdAt": "string",
+    "updatedBy": "string",
+    "createdBy": "string",
+    "dataVersion": "string",
+    "taxId": "string",
+    "isArchived": true,
+    "id": "string",
+    "version": 0,
+    "updatedAt": "string"
+  }
+}
+```
+
+<h3 id="post__core.taxitem.taxitemservice.create-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[core.taxItem.CreateTaxItemRes](#schemacore.taxitem.createtaxitemres)|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## post__core.taxItem.TaxItemService.purgeTaxItem
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST http://127.0.0.1:8080/core.taxItem.TaxItemService.purgeTaxItem \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json'
+
+```
+
+```http
+POST http://127.0.0.1:8080/core.taxItem.TaxItemService.purgeTaxItem HTTP/1.1
+Host: 127.0.0.1:8080
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+const inputBody = '{
+  "ageing": 0
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json'
+};
+
+fetch('http://127.0.0.1:8080/core.taxItem.TaxItemService.purgeTaxItem',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json'
+}
+
+result = RestClient.post 'http://127.0.0.1:8080/core.taxItem.TaxItemService.purgeTaxItem',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.post('http://127.0.0.1:8080/core.taxItem.TaxItemService.purgeTaxItem', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Content-Type' => 'application/json',
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('POST','http://127.0.0.1:8080/core.taxItem.TaxItemService.purgeTaxItem', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("http://127.0.0.1:8080/core.taxItem.TaxItemService.purgeTaxItem");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Content-Type": []string{"application/json"},
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "http://127.0.0.1:8080/core.taxItem.TaxItemService.purgeTaxItem", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`POST /core.taxItem.TaxItemService.purgeTaxItem`
+
+purgeTaxItem
+
+> Body parameter
+
+```json
+{
+  "ageing": 0
+}
+```
+
+<h3 id="post__core.taxitem.taxitemservice.purgetaxitem-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|headers|query|object|false|Headers passed to gRPC server|
+|body|body|[core.taxItem.PurgeTaxItemReq](#schemacore.taxitem.purgetaxitemreq)|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "listTaxItemId": [
+    "string"
+  ]
+}
+```
+
+<h3 id="post__core.taxitem.taxitemservice.purgetaxitem-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|[core.taxItem.PurgeTaxItemRes](#schemacore.taxitem.purgetaxitemres)|
 
 <aside class="success">
 This operation does not require authentication
@@ -3928,191 +2225,789 @@ This operation does not require authentication
 
 # Schemas
 
-<h2 id="tocS_ApiResponse">ApiResponse</h2>
+<h2 id="tocS_core.taxItem.UpdateTaxItemReq">core.taxItem.UpdateTaxItemReq</h2>
 <!-- backwards compatibility -->
-<a id="schemaapiresponse"></a>
-<a id="schema_ApiResponse"></a>
-<a id="tocSapiresponse"></a>
-<a id="tocsapiresponse"></a>
+<a id="schemacore.taxitem.updatetaxitemreq"></a>
+<a id="schema_core.taxItem.UpdateTaxItemReq"></a>
+<a id="tocScore.taxitem.updatetaxitemreq"></a>
+<a id="tocscore.taxitem.updatetaxitemreq"></a>
 
 ```json
 {
-  "code": 0,
-  "type": "string",
-  "message": "string"
+  "itemId": "string",
+  "optimisticVersion": 0,
+  "taxId": "string",
+  "taxItemId": "string"
 }
 
 ```
+
+UpdateTaxItemReq
 
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|code|integer(int32)|false|none|none|
-|type|string|false|none|none|
-|message|string|false|none|none|
+|itemId|string|false|none|none|
+|optimisticVersion|integer(int64)|false|none|none|
+|taxId|string|false|none|none|
+|taxItemId|string|false|none|none|
 
-<h2 id="tocS_Category">Category</h2>
+<h2 id="tocS_core.taxItem.UpdateTaxItemRes">core.taxItem.UpdateTaxItemRes</h2>
 <!-- backwards compatibility -->
-<a id="schemacategory"></a>
-<a id="schema_Category"></a>
-<a id="tocScategory"></a>
-<a id="tocscategory"></a>
+<a id="schemacore.taxitem.updatetaxitemres"></a>
+<a id="schema_core.taxItem.UpdateTaxItemRes"></a>
+<a id="tocScore.taxitem.updatetaxitemres"></a>
+<a id="tocscore.taxitem.updatetaxitemres"></a>
 
 ```json
 {
-  "id": 0,
-  "name": "string"
+  "taxItemDto": {
+    "owner": "string",
+    "itemId": "string",
+    "createdAt": "string",
+    "updatedBy": "string",
+    "createdBy": "string",
+    "dataVersion": "string",
+    "taxId": "string",
+    "isArchived": true,
+    "id": "string",
+    "version": 0,
+    "updatedAt": "string"
+  }
 }
 
 ```
+
+UpdateTaxItemRes
 
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|id|integer(int64)|false|none|none|
+|taxItemDto|[core.taxItem.TaxItemDto](#schemacore.taxitem.taxitemdto)|false|none|none|
+
+<h2 id="tocS_core.taxItem.TaxItemDto">core.taxItem.TaxItemDto</h2>
+<!-- backwards compatibility -->
+<a id="schemacore.taxitem.taxitemdto"></a>
+<a id="schema_core.taxItem.TaxItemDto"></a>
+<a id="tocScore.taxitem.taxitemdto"></a>
+<a id="tocscore.taxitem.taxitemdto"></a>
+
+```json
+{
+  "owner": "string",
+  "itemId": "string",
+  "createdAt": "string",
+  "updatedBy": "string",
+  "createdBy": "string",
+  "dataVersion": "string",
+  "taxId": "string",
+  "isArchived": true,
+  "id": "string",
+  "version": 0,
+  "updatedAt": "string"
+}
+
+```
+
+TaxItemDto
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|owner|string|false|none|none|
+|itemId|string|false|none|none|
+|createdAt|string|false|none|none|
+|updatedBy|string|false|none|none|
+|createdBy|string|false|none|none|
+|dataVersion|string|false|none|none|
+|taxId|string|false|none|none|
+|isArchived|boolean|false|none|none|
+|id|string|false|none|none|
+|version|integer(int64)|false|none|none|
+|updatedAt|string|false|none|none|
+
+<h2 id="tocS_core.taxItem.TaxDto">core.taxItem.TaxDto</h2>
+<!-- backwards compatibility -->
+<a id="schemacore.taxitem.taxdto"></a>
+<a id="schema_core.taxItem.TaxDto"></a>
+<a id="tocScore.taxitem.taxdto"></a>
+<a id="tocscore.taxitem.taxdto"></a>
+
+```json
+{
+  "owner": "string",
+  "appToCreate": "string",
+  "updatedBy": "string",
+  "code": "string",
+  "dataVersion": "string",
+  "isArchived": true,
+  "onlyVisibleToCreatorApp": true,
+  "locationToCreate": "string",
+  "objectClass": "string",
+  "appSubClass": "string",
+  "appSubKey": "string",
+  "version": 0,
+  "percent": 0,
+  "createdAt": "string",
+  "createdBy": "string",
+  "name": "string",
+  "objectName": "string",
+  "appKey": "string",
+  "id": "string",
+  "updatedAt": "string"
+}
+
+```
+
+TaxDto
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|owner|string|false|none|none|
+|appToCreate|string|false|none|none|
+|updatedBy|string|false|none|none|
+|code|string|false|none|none|
+|dataVersion|string|false|none|none|
+|isArchived|boolean|false|none|none|
+|onlyVisibleToCreatorApp|boolean|false|none|none|
+|locationToCreate|string|false|none|none|
+|objectClass|string|false|none|none|
+|appSubClass|string|false|none|none|
+|appSubKey|string|false|none|none|
+|version|integer(int64)|false|none|none|
+|percent|number(double)|false|none|none|
+|createdAt|string|false|none|none|
+|createdBy|string|false|none|none|
 |name|string|false|none|none|
+|objectName|string|false|none|none|
+|appKey|string|false|none|none|
+|id|string|false|none|none|
+|updatedAt|string|false|none|none|
 
-<h2 id="tocS_Pet">Pet</h2>
+<h2 id="tocS_core.taxItem.ShowArchivedTaxItemReq">core.taxItem.ShowArchivedTaxItemReq</h2>
 <!-- backwards compatibility -->
-<a id="schemapet"></a>
-<a id="schema_Pet"></a>
-<a id="tocSpet"></a>
-<a id="tocspet"></a>
+<a id="schemacore.taxitem.showarchivedtaxitemreq"></a>
+<a id="schema_core.taxItem.ShowArchivedTaxItemReq"></a>
+<a id="tocScore.taxitem.showarchivedtaxitemreq"></a>
+<a id="tocscore.taxitem.showarchivedtaxitemreq"></a>
 
 ```json
 {
-  "id": 0,
-  "category": {
-    "id": 0,
-    "name": "string"
-  },
-  "name": "doggie",
-  "photoUrls": [
+  "pagingAndSorting": {
+    "sortOrder": "ASC",
+    "limit": 0,
+    "lastIndex": "string"
+  }
+}
+
+```
+
+ShowArchivedTaxItemReq
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|pagingAndSorting|[core.taxItem.PagingAndSorting](#schemacore.taxitem.pagingandsorting)|false|none|none|
+
+<h2 id="tocS_core.taxItem.SearchTaxItemFilter">core.taxItem.SearchTaxItemFilter</h2>
+<!-- backwards compatibility -->
+<a id="schemacore.taxitem.searchtaxitemfilter"></a>
+<a id="schema_core.taxItem.SearchTaxItemFilter"></a>
+<a id="tocScore.taxitem.searchtaxitemfilter"></a>
+<a id="tocscore.taxitem.searchtaxitemfilter"></a>
+
+```json
+{
+  "itemId": [
     "string"
   ],
-  "tags": [
-    {
-      "id": 0,
-      "name": "string"
-    }
+  "taxId": [
+    "string"
   ],
-  "status": "available"
+  "taxItemId": [
+    "string"
+  ]
 }
 
 ```
+
+SearchTaxItemFilter
 
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|id|integer(int64)|false|none|none|
-|category|[Category](#schemacategory)|false|none|none|
-|name|string|true|none|none|
-|photoUrls|[string]|true|none|none|
-|tags|[[Tag](#schematag)]|false|none|none|
-|status|string|false|none|pet status in the store|
+|itemId|[string]|false|none|none|
+|taxId|[string]|false|none|none|
+|taxItemId|[string]|false|none|none|
+
+<h2 id="tocS_core.taxItem.SearchTaxItemReq">core.taxItem.SearchTaxItemReq</h2>
+<!-- backwards compatibility -->
+<a id="schemacore.taxitem.searchtaxitemreq"></a>
+<a id="schema_core.taxItem.SearchTaxItemReq"></a>
+<a id="tocScore.taxitem.searchtaxitemreq"></a>
+<a id="tocscore.taxitem.searchtaxitemreq"></a>
+
+```json
+{
+  "queryString": "string",
+  "pagingAndSorting": {
+    "sortOrder": "ASC",
+    "limit": 0,
+    "lastIndex": "string"
+  }
+}
+
+```
+
+SearchTaxItemReq
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|queryString|string|false|none|none|
+|pagingAndSorting|[core.taxItem.PagingAndSorting](#schemacore.taxitem.pagingandsorting)|false|none|none|
+
+<h2 id="tocS_core.taxItem.GetTaxItemByIdReq">core.taxItem.GetTaxItemByIdReq</h2>
+<!-- backwards compatibility -->
+<a id="schemacore.taxitem.gettaxitembyidreq"></a>
+<a id="schema_core.taxItem.GetTaxItemByIdReq"></a>
+<a id="tocScore.taxitem.gettaxitembyidreq"></a>
+<a id="tocscore.taxitem.gettaxitembyidreq"></a>
+
+```json
+{
+  "id": "string"
+}
+
+```
+
+GetTaxItemByIdReq
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|id|string|false|none|none|
+
+<h2 id="tocS_core.taxItem.GetTaxItemByIdRes">core.taxItem.GetTaxItemByIdRes</h2>
+<!-- backwards compatibility -->
+<a id="schemacore.taxitem.gettaxitembyidres"></a>
+<a id="schema_core.taxItem.GetTaxItemByIdRes"></a>
+<a id="tocScore.taxitem.gettaxitembyidres"></a>
+<a id="tocscore.taxitem.gettaxitembyidres"></a>
+
+```json
+{
+  "taxItemDto": {
+    "owner": "string",
+    "itemId": "string",
+    "createdAt": "string",
+    "updatedBy": "string",
+    "createdBy": "string",
+    "dataVersion": "string",
+    "taxId": "string",
+    "isArchived": true,
+    "id": "string",
+    "version": 0,
+    "updatedAt": "string"
+  }
+}
+
+```
+
+GetTaxItemByIdRes
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|taxItemDto|[core.taxItem.TaxItemDto](#schemacore.taxitem.taxitemdto)|false|none|none|
+
+<h2 id="tocS_core.taxItem.SearchTaxItemRes">core.taxItem.SearchTaxItemRes</h2>
+<!-- backwards compatibility -->
+<a id="schemacore.taxitem.searchtaxitemres"></a>
+<a id="schema_core.taxItem.SearchTaxItemRes"></a>
+<a id="tocScore.taxitem.searchtaxitemres"></a>
+<a id="tocscore.taxitem.searchtaxitemres"></a>
+
+```json
+{
+  "data": [
+    {
+      "owner": "string",
+      "itemId": "string",
+      "createdAt": "string",
+      "updatedBy": "string",
+      "createdBy": "string",
+      "dataVersion": "string",
+      "taxId": "string",
+      "isArchived": true,
+      "id": "string",
+      "version": 0,
+      "updatedAt": "string"
+    }
+  ]
+}
+
+```
+
+SearchTaxItemRes
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|data|[[core.taxItem.TaxItemDto](#schemacore.taxitem.taxitemdto)]|false|none|none|
+
+<h2 id="tocS_core.taxItem.TimeRangeFilter">core.taxItem.TimeRangeFilter</h2>
+<!-- backwards compatibility -->
+<a id="schemacore.taxitem.timerangefilter"></a>
+<a id="schema_core.taxItem.TimeRangeFilter"></a>
+<a id="tocScore.taxitem.timerangefilter"></a>
+<a id="tocscore.taxitem.timerangefilter"></a>
+
+```json
+{
+  "createdFrom": "string",
+  "updatedFrom": "string",
+  "updatedTo": "string",
+  "createdTo": "string"
+}
+
+```
+
+TimeRangeFilter
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|createdFrom|string|false|none|none|
+|updatedFrom|string|false|none|none|
+|updatedTo|string|false|none|none|
+|createdTo|string|false|none|none|
+
+<h2 id="tocS_core.taxItem.PagingAndSorting">core.taxItem.PagingAndSorting</h2>
+<!-- backwards compatibility -->
+<a id="schemacore.taxitem.pagingandsorting"></a>
+<a id="schema_core.taxItem.PagingAndSorting"></a>
+<a id="tocScore.taxitem.pagingandsorting"></a>
+<a id="tocscore.taxitem.pagingandsorting"></a>
+
+```json
+{
+  "sortOrder": "ASC",
+  "limit": 0,
+  "lastIndex": "string"
+}
+
+```
+
+PagingAndSorting
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|sortOrder|enum|false|none|none|
+|limit|integer(int32)|false|none|none|
+|lastIndex|string|false|none|none|
 
 #### Enumerated Values
 
 |Property|Value|
 |---|---|
-|status|available|
-|status|pending|
-|status|sold|
+|sortOrder|ASC|
+|sortOrder|DESC|
 
-<h2 id="tocS_Tag">Tag</h2>
+<h2 id="tocS_core.taxItem.ArchiveTaxItemReq">core.taxItem.ArchiveTaxItemReq</h2>
 <!-- backwards compatibility -->
-<a id="schematag"></a>
-<a id="schema_Tag"></a>
-<a id="tocStag"></a>
-<a id="tocstag"></a>
+<a id="schemacore.taxitem.archivetaxitemreq"></a>
+<a id="schema_core.taxItem.ArchiveTaxItemReq"></a>
+<a id="tocScore.taxitem.archivetaxitemreq"></a>
+<a id="tocscore.taxitem.archivetaxitemreq"></a>
 
 ```json
 {
-  "id": 0,
-  "name": "string"
+  "optimisticVersion": 0,
+  "taxItemId": "string"
 }
 
 ```
+
+ArchiveTaxItemReq
 
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|id|integer(int64)|false|none|none|
-|name|string|false|none|none|
+|optimisticVersion|integer(int64)|false|none|none|
+|taxItemId|string|false|none|none|
 
-<h2 id="tocS_Order">Order</h2>
+<h2 id="tocS_core.taxItem.PurgeTaxItemRes">core.taxItem.PurgeTaxItemRes</h2>
 <!-- backwards compatibility -->
-<a id="schemaorder"></a>
-<a id="schema_Order"></a>
-<a id="tocSorder"></a>
-<a id="tocsorder"></a>
+<a id="schemacore.taxitem.purgetaxitemres"></a>
+<a id="schema_core.taxItem.PurgeTaxItemRes"></a>
+<a id="tocScore.taxitem.purgetaxitemres"></a>
+<a id="tocscore.taxitem.purgetaxitemres"></a>
 
 ```json
 {
-  "id": 0,
-  "petId": 0,
-  "quantity": 0,
-  "shipDate": "2019-08-24T14:15:22Z",
-  "status": "placed",
-  "complete": true
+  "listTaxItemId": [
+    "string"
+  ]
 }
 
 ```
+
+PurgeTaxItemRes
 
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|id|integer(int64)|false|none|none|
-|petId|integer(int64)|false|none|none|
-|quantity|integer(int32)|false|none|none|
-|shipDate|string(date-time)|false|none|none|
-|status|string|false|none|Order Status|
-|complete|boolean|false|none|none|
+|listTaxItemId|[string]|false|none|none|
 
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|status|placed|
-|status|approved|
-|status|delivered|
-
-<h2 id="tocS_User">User</h2>
+<h2 id="tocS_core.taxItem.CreateTaxItemRes">core.taxItem.CreateTaxItemRes</h2>
 <!-- backwards compatibility -->
-<a id="schemauser"></a>
-<a id="schema_User"></a>
-<a id="tocSuser"></a>
-<a id="tocsuser"></a>
+<a id="schemacore.taxitem.createtaxitemres"></a>
+<a id="schema_core.taxItem.CreateTaxItemRes"></a>
+<a id="tocScore.taxitem.createtaxitemres"></a>
+<a id="tocscore.taxitem.createtaxitemres"></a>
 
 ```json
 {
-  "id": 0,
-  "username": "string",
-  "firstName": "string",
-  "lastName": "string",
-  "email": "string",
-  "password": "string",
-  "phone": "string",
-  "userStatus": 0
+  "taxItemDto": {
+    "owner": "string",
+    "itemId": "string",
+    "createdAt": "string",
+    "updatedBy": "string",
+    "createdBy": "string",
+    "dataVersion": "string",
+    "taxId": "string",
+    "isArchived": true,
+    "id": "string",
+    "version": 0,
+    "updatedAt": "string"
+  }
 }
 
 ```
+
+CreateTaxItemRes
 
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|id|integer(int64)|false|none|none|
-|username|string|false|none|none|
-|firstName|string|false|none|none|
-|lastName|string|false|none|none|
-|email|string|false|none|none|
-|password|string|false|none|none|
-|phone|string|false|none|none|
-|userStatus|integer(int32)|false|none|User Status|
+|taxItemDto|[core.taxItem.TaxItemDto](#schemacore.taxitem.taxitemdto)|false|none|none|
+
+<h2 id="tocS_core.taxItem.PurgeTaxItemReq">core.taxItem.PurgeTaxItemReq</h2>
+<!-- backwards compatibility -->
+<a id="schemacore.taxitem.purgetaxitemreq"></a>
+<a id="schema_core.taxItem.PurgeTaxItemReq"></a>
+<a id="tocScore.taxitem.purgetaxitemreq"></a>
+<a id="tocscore.taxitem.purgetaxitemreq"></a>
+
+```json
+{
+  "ageing": 0
+}
+
+```
+
+PurgeTaxItemReq
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|ageing|integer(int64)|false|none|none|
+
+<h2 id="tocS_core.taxItem.ArchiveTaxItemRes">core.taxItem.ArchiveTaxItemRes</h2>
+<!-- backwards compatibility -->
+<a id="schemacore.taxitem.archivetaxitemres"></a>
+<a id="schema_core.taxItem.ArchiveTaxItemRes"></a>
+<a id="tocScore.taxitem.archivetaxitemres"></a>
+<a id="tocscore.taxitem.archivetaxitemres"></a>
+
+```json
+{
+  "taxItemDto": {
+    "owner": "string",
+    "itemId": "string",
+    "createdAt": "string",
+    "updatedBy": "string",
+    "createdBy": "string",
+    "dataVersion": "string",
+    "taxId": "string",
+    "isArchived": true,
+    "id": "string",
+    "version": 0,
+    "updatedAt": "string"
+  }
+}
+
+```
+
+ArchiveTaxItemRes
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|taxItemDto|[core.taxItem.TaxItemDto](#schemacore.taxitem.taxitemdto)|false|none|none|
+
+<h2 id="tocS_core.taxItem.CreateTaxItemReq">core.taxItem.CreateTaxItemReq</h2>
+<!-- backwards compatibility -->
+<a id="schemacore.taxitem.createtaxitemreq"></a>
+<a id="schema_core.taxItem.CreateTaxItemReq"></a>
+<a id="tocScore.taxitem.createtaxitemreq"></a>
+<a id="tocscore.taxitem.createtaxitemreq"></a>
+
+```json
+{
+  "itemId": "string",
+  "taxId": "string"
+}
+
+```
+
+CreateTaxItemReq
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|itemId|string|false|none|none|
+|taxId|string|false|none|none|
+
+<h2 id="tocS_core.taxItem.RecoverTaxItemRes">core.taxItem.RecoverTaxItemRes</h2>
+<!-- backwards compatibility -->
+<a id="schemacore.taxitem.recovertaxitemres"></a>
+<a id="schema_core.taxItem.RecoverTaxItemRes"></a>
+<a id="tocScore.taxitem.recovertaxitemres"></a>
+<a id="tocscore.taxitem.recovertaxitemres"></a>
+
+```json
+{
+  "taxItemDto": {
+    "owner": "string",
+    "itemId": "string",
+    "createdAt": "string",
+    "updatedBy": "string",
+    "createdBy": "string",
+    "dataVersion": "string",
+    "taxId": "string",
+    "isArchived": true,
+    "id": "string",
+    "version": 0,
+    "updatedAt": "string"
+  }
+}
+
+```
+
+RecoverTaxItemRes
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|taxItemDto|[core.taxItem.TaxItemDto](#schemacore.taxitem.taxitemdto)|false|none|none|
+
+<h2 id="tocS_core.taxItem.RecoverTaxItemReq">core.taxItem.RecoverTaxItemReq</h2>
+<!-- backwards compatibility -->
+<a id="schemacore.taxitem.recovertaxitemreq"></a>
+<a id="schema_core.taxItem.RecoverTaxItemReq"></a>
+<a id="tocScore.taxitem.recovertaxitemreq"></a>
+<a id="tocscore.taxitem.recovertaxitemreq"></a>
+
+```json
+{
+  "taxItemId": "string"
+}
+
+```
+
+RecoverTaxItemReq
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|taxItemId|string|false|none|none|
+
+<h2 id="tocS_core.taxItem.CountSearchTaxItemReq">core.taxItem.CountSearchTaxItemReq</h2>
+<!-- backwards compatibility -->
+<a id="schemacore.taxitem.countsearchtaxitemreq"></a>
+<a id="schema_core.taxItem.CountSearchTaxItemReq"></a>
+<a id="tocScore.taxitem.countsearchtaxitemreq"></a>
+<a id="tocscore.taxitem.countsearchtaxitemreq"></a>
+
+```json
+{
+  "queryString": "string"
+}
+
+```
+
+CountSearchTaxItemReq
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|queryString|string|false|none|none|
+
+<h2 id="tocS_core.taxItem.GetTaxByItemIdRes">core.taxItem.GetTaxByItemIdRes</h2>
+<!-- backwards compatibility -->
+<a id="schemacore.taxitem.gettaxbyitemidres"></a>
+<a id="schema_core.taxItem.GetTaxByItemIdRes"></a>
+<a id="tocScore.taxitem.gettaxbyitemidres"></a>
+<a id="tocscore.taxitem.gettaxbyitemidres"></a>
+
+```json
+{
+  "taxList": [
+    {
+      "owner": "string",
+      "appToCreate": "string",
+      "updatedBy": "string",
+      "code": "string",
+      "dataVersion": "string",
+      "isArchived": true,
+      "onlyVisibleToCreatorApp": true,
+      "locationToCreate": "string",
+      "objectClass": "string",
+      "appSubClass": "string",
+      "appSubKey": "string",
+      "version": 0,
+      "percent": 0,
+      "createdAt": "string",
+      "createdBy": "string",
+      "name": "string",
+      "objectName": "string",
+      "appKey": "string",
+      "id": "string",
+      "updatedAt": "string"
+    }
+  ]
+}
+
+```
+
+GetTaxByItemIdRes
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|taxList|[[core.taxItem.TaxDto](#schemacore.taxitem.taxdto)]|false|none|none|
+
+<h2 id="tocS_core.taxItem.ShowArchivedTaxItemRes">core.taxItem.ShowArchivedTaxItemRes</h2>
+<!-- backwards compatibility -->
+<a id="schemacore.taxitem.showarchivedtaxitemres"></a>
+<a id="schema_core.taxItem.ShowArchivedTaxItemRes"></a>
+<a id="tocScore.taxitem.showarchivedtaxitemres"></a>
+<a id="tocscore.taxitem.showarchivedtaxitemres"></a>
+
+```json
+{
+  "listTaxItemDtoArchived": [
+    {
+      "owner": "string",
+      "itemId": "string",
+      "createdAt": "string",
+      "updatedBy": "string",
+      "createdBy": "string",
+      "dataVersion": "string",
+      "taxId": "string",
+      "isArchived": true,
+      "id": "string",
+      "version": 0,
+      "updatedAt": "string"
+    }
+  ]
+}
+
+```
+
+ShowArchivedTaxItemRes
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|listTaxItemDtoArchived|[[core.taxItem.TaxItemDto](#schemacore.taxitem.taxitemdto)]|false|none|none|
+
+<h2 id="tocS_core.taxItem.GetTaxByItemIdReq">core.taxItem.GetTaxByItemIdReq</h2>
+<!-- backwards compatibility -->
+<a id="schemacore.taxitem.gettaxbyitemidreq"></a>
+<a id="schema_core.taxItem.GetTaxByItemIdReq"></a>
+<a id="tocScore.taxitem.gettaxbyitemidreq"></a>
+<a id="tocscore.taxitem.gettaxbyitemidreq"></a>
+
+```json
+{
+  "itemId": "string"
+}
+
+```
+
+GetTaxByItemIdReq
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|itemId|string|false|none|none|
+
+<h2 id="tocS_core.taxItem.CountRes">core.taxItem.CountRes</h2>
+<!-- backwards compatibility -->
+<a id="schemacore.taxitem.countres"></a>
+<a id="schema_core.taxItem.CountRes"></a>
+<a id="tocScore.taxitem.countres"></a>
+<a id="tocscore.taxitem.countres"></a>
+
+```json
+{
+  "count": 0
+}
+
+```
+
+CountRes
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|count|integer(int64)|false|none|none|
+
+<h2 id="tocS_core.taxItem.CountArchiveTaxItemReq">core.taxItem.CountArchiveTaxItemReq</h2>
+<!-- backwards compatibility -->
+<a id="schemacore.taxitem.countarchivetaxitemreq"></a>
+<a id="schema_core.taxItem.CountArchiveTaxItemReq"></a>
+<a id="tocScore.taxitem.countarchivetaxitemreq"></a>
+<a id="tocscore.taxitem.countarchivetaxitemreq"></a>
+
+```json
+{}
+
+```
+
+CountArchiveTaxItemReq
+
+### Properties
+
+*None*
 
